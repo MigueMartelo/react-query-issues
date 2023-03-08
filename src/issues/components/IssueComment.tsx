@@ -1,24 +1,25 @@
 import { FC } from 'react';
 import ReactMarkdown from 'react-markdown';
+import { Issue } from '../interfaces/issue';
 
 interface Props {
-  body: string;
+  issue: Issue;
 }
 
-export const IssueComment: FC<Props> = ({ body }) => {
+export const IssueComment: FC<Props> = ({ issue }) => {
   return (
     <div className='col-12'>
       <div className='card border-white mt-2'>
         <div className='card-header bg-dark'>
           <img
-            src='https://avatars.githubusercontent.com/u/1933404?v=4'
+            src={issue.user.avatar_url}
             alt='User Avatar'
             className='avatar'
           />
-          <span className='mx-2'>Pandaiolo commented</span>
+          <span className='mx-2'>{issue.user.login} commented</span>
         </div>
         <div className='card-body text-dark'>
-          <ReactMarkdown>{body}</ReactMarkdown>
+          <ReactMarkdown>{issue.body}</ReactMarkdown>
         </div>
       </div>
     </div>
